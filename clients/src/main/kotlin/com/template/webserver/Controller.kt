@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/") // The paths for HTTP requests are relative to this base path.
 class Controller(rpc: NodeRPCConnection) {
 
-    companion object {
-        private val logger = LoggerFactory.getLogger(RestController::class.java)
-    }
+  companion object {
+    private val logger = LoggerFactory.getLogger(RestController::class.java)
+  }
 
-    private val proxy = rpc.proxy
+  private val proxy = rpc.proxy
 
-    @GetMapping(value = "/templateendpoint", produces = arrayOf("text/plain"))
-    private fun templateendpoint(): String {
-        return "Define an endpoint here."
-    }
+  @GetMapping(value = "/templateendpoint", produces = arrayOf("text/plain"))
+  private fun templateendpoint(): String {
+    return "Define an endpoint here."
+  }
 }

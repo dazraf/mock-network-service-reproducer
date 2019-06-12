@@ -10,18 +10,18 @@ import net.corda.core.utilities.ProgressTracker
 @InitiatingFlow
 @StartableByRPC
 class Initiator : FlowLogic<Unit>() {
-    override val progressTracker = ProgressTracker()
+  override val progressTracker = ProgressTracker()
 
-    @Suspendable
-    override fun call() {
-        // Initiator flow logic goes here.
-    }
+  @Suspendable
+  override fun call() {
+    // Initiator flow logic goes here.
+  }
 }
 
 @InitiatedBy(Initiator::class)
 class Responder(val counterpartySession: FlowSession) : FlowLogic<Unit>() {
-    @Suspendable
-    override fun call() {
-        // Responder flow logic goes here.
-    }
+  @Suspendable
+  override fun call() {
+    // Responder flow logic goes here.
+  }
 }
