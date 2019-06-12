@@ -9,12 +9,12 @@ import net.corda.core.utilities.ProgressTracker
 // *********
 @InitiatingFlow
 @StartableByRPC
-class Initiator : FlowLogic<Unit>() {
+class Initiator : FlowLogic<Int>() {
   override val progressTracker = ProgressTracker()
 
   @Suspendable
-  override fun call() {
-    // Initiator flow logic goes here.
+  override fun call() :Int {
+    return Int.MAX_VALUE
   }
 }
 
