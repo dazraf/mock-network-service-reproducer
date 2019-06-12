@@ -9,17 +9,23 @@ import net.corda.core.utilities.getOrThrow
 import net.corda.testing.node.MockNetwork
 import net.corda.testing.node.MockNetworkParameters
 import net.corda.testing.node.TestCordapp
+import net.corda.testing.node.internal.CustomCordapp
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class FlowTests {
-  private val network = MockNetwork(MockNetworkParameters(cordappsForAllNodes = listOf(
-    TestCordapp.findCordapp(TemplateContract::class.packageName),
-    TestCordapp.findCordapp(Initiator::class.packageName),
-    TestCordapp.findCordapp(TestCordaService::class.packageName)
-  )))
+  // we collect the distinct set of paths in the event that we don't add the same cordapp twice
+  private val cordapps = listOf(
+    TemplateContract::class,
+    Initiator::class
+  ).map { it.packageName }.distinct().map { TestCordapp.findCordapp(it) }
+
+  private val customTestCordapp = CustomCordapp(packages = setOf(TestCordaService::class.packageName),
+    classes = setOf(TestCordaService::class.java))
+
+  private val network = MockNetwork(MockNetworkParameters(cordappsForAllNodes = cordapps + customTestCordapp))
   private val a = network.createNode()
   private val b = network.createNode()
 
