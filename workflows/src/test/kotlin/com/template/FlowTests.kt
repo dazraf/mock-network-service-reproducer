@@ -16,7 +16,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 class FlowTests {
-  // we collect the distinct set of paths in the event that we don't add the same cordapp twice
+  // we collect the distinct set of paths so that we avoid adding the same cordapp twice
   private val cordapps = listOf(
     TemplateContract::class,
     Initiator::class

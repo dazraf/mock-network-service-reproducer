@@ -19,7 +19,7 @@ This no longer works. Is there another way of achieving the intended outcome?
 I found the very useful class `net.corda.testing.node.internal.CustomCordapp`
 
 ```kotlin
-  // we collect the distinct set of paths in the event that we don't add the same cordapp twice
+  // we collect the distinct set of paths so that we avoid adding the same cordapp twice
   private val cordapps = listOf(
     TemplateContract::class,
     Initiator::class
